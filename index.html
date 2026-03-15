@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sreenivas Raman</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #0c0d12; color: #e8e4dc; min-height: 100vh; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); position: sticky; top: 0; background: rgba(12,13,18,0.94); backdrop-filter: blur(12px); z-index: 100; }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: #c0392b; letter-spacing: 0.02em; }
+  .nav-logo span { color: #e8e4dc; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-link { font-size: 0.82rem; font-weight: 400; color: rgba(232,228,220,0.45); cursor: pointer; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; border: none; background: none; }
+  .nav-link:hover, .nav-link.active { color: #c0392b; }
+
+  .page { display: none; animation: fadein 0.35s ease; }
+  .page.active { display: block; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* HOME */
+  .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2.5rem 3rem; max-width: 1000px; margin: 0 auto; }
+  .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(232,228,220,0.35); margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: #c0392b; }
+  .hero-name { font-family: 'DM Serif Display', serif; font-size: clamp(3.2rem, 8vw, 5.5rem); line-height: 1.05; color: #f0ece2; margin-bottom: 1.25rem; }
+  .hero-name em { color: #c0392b; font-style: italic; display: block; }
+  .hero-tagline { font-size: 1.05rem; font-weight: 300; color: rgba(232,228,220,0.5); max-width: 480px; line-height: 1.85; margin-bottom: 2.5rem; }
+  .hero-tagline strong { color: #e8e4dc; font-weight: 400; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { padding: 0.65rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; letter-spacing: 0.06em; border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn-red { background: #c0392b; color: #fff; border: none; font-weight: 500; }
+  .btn-red:hover { background: #d44333; }
+  .btn-outline { background: transparent; color: #e8e4dc; border: 0.5px solid rgba(232,228,220,0.2); }
+  .btn-outline:hover { border-color: #c0392b; color: #c0392b; }
+
+  .arc-deco { position: absolute; right: 6%; top: 50%; transform: translateY(-50%); width: 180px; height: 180px; opacity: 0.06; pointer-events: none; }
+  .hero-wrap { position: relative; }
+
+  /* ABOUT */
+  .about-wrap { max-width: 1000px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #c0392b; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.6rem; }
+  .section-label::after { content: ''; flex: 1; height: 0.5px; background: rgba(192,57,43,0.25); max-width: 80px; }
+  .about-headline { font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.18; color: #f0ece2; margin-bottom: 1.75rem; }
+  .about-body { font-size: 0.94rem; line-height: 1.95; color: rgba(232,228,220,0.6); max-width: 520px; }
+  .about-body p + p { margin-top: 1rem; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+  .info-stack { display: flex; flex-direction: column; gap: 0.9rem; }
+  .info-card { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.1rem 1.4rem; transition: border-color 0.2s; }
+  .info-card:hover { border-color: rgba(192,57,43,0.3); }
+  .info-card-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(232,228,220,0.3); margin-bottom: 0.3rem; }
+  .info-card-value { font-size: 0.9rem; color: #e8e4dc; }
+  .info-card a { color: #c0392b; text-decoration: none; }
+  .info-card a:hover { text-decoration: underline; }
+
+  .divider { width: 40px; height: 1px; background: rgba(192,57,43,0.4); margin: 2.5rem 0; }
+
+  .hobbies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  .hobby-card { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem 1.1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hobby-icon { font-size: 1.3rem; line-height: 1; width: 28px; text-align: center; }
+  .hobby-name { font-size: 0.85rem; color: rgba(232,228,220,0.75); }
+
+  .featured-wrap { max-width: 1000px; margin: 0 auto; padding: 0 2.5rem 5rem; }
+  .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+  .feat-card { background: rgba(255,255,255,0.025); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+  .feat-card:hover { border-color: rgba(192,57,43,0.35); transform: translateY(-2px); }
+  .feat-card-icon { width: 38px; height: 38px; border-radius: 8px; background: rgba(192,57,43,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; font-size: 1.1rem; }
+  .feat-card-title { font-size: 0.95rem; font-weight: 500; color: #f0ece2; margin-bottom: 0.5rem; }
+  .feat-card-desc { font-size: 0.82rem; color: rgba(232,228,220,0.45); line-height: 1.75; }
+  .feat-card-link { display: inline-block; margin-top: 1rem; font-size: 0.78rem; color: #c0392b; letter-spacing: 0.05em; }
+
+  /* APPS */
+  .apps-wrap { max-width: 1000px; margin: 0 auto; padding: 4rem 2.5rem; }
+  .apps-empty { text-align: center; padding: 5rem 2rem; border: 0.5px dashed rgba(255,255,255,0.08); border-radius: 16px; margin-top: 1.5rem; }
+  .apps-empty-icon { font-size: 2.2rem; opacity: 0.25; margin-bottom: 1.5rem; }
+  .apps-empty h2 { font-family: 'DM Serif Display', serif; font-size: 1.7rem; color: #f0ece2; margin-bottom: 0.75rem; }
+  .apps-empty p { color: rgba(232,228,220,0.35); font-size: 0.9rem; max-width: 380px; margin: 0 auto; line-height: 1.8; }
+
+  @media (max-width: 680px) {
+    .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero, .about-wrap, .featured-wrap, .apps-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .arc-deco { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">S<span>R</span></div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('home')">Home</button>
+    <button class="nav-link" onclick="showPage('about')">About</button>
+    <button class="nav-link" onclick="showPage('apps')">Apps</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="hero-wrap">
+    <svg class="arc-deco" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="90" cy="90" r="88" stroke="white" stroke-width="1"/>
+      <circle cx="90" cy="90" r="70" stroke="white" stroke-width="0.5"/>
+      <circle cx="90" cy="90" r="50" stroke="white" stroke-width="1"/>
+      <circle cx="90" cy="90" r="30" stroke="white" stroke-width="0.5"/>
+      <circle cx="90" cy="90" r="14" stroke="white" stroke-width="1.5"/>
+      <line x1="90" y1="2" x2="90" y2="178" stroke="white" stroke-width="0.5"/>
+      <line x1="2" y1="90" x2="178" y2="90" stroke="white" stroke-width="0.5"/>
+      <line x1="27" y1="27" x2="153" y2="153" stroke="white" stroke-width="0.5"/>
+      <line x1="153" y1="27" x2="27" y2="153" stroke="white" stroke-width="0.5"/>
+    </svg>
+    <div class="hero">
+      <div class="hero-eyebrow">Developer · Creator · Iron Man Fan</div>
+      <h1 class="hero-name">Sreenivas<em>Raman</em></h1>
+      <p class="hero-tagline">
+        Part developer, part Iron Man fan.<br>
+        <strong>Mostly developer.</strong>
+      </p>
+      <div class="hero-cta">
+        <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" class="btn btn-red">LinkedIn ↗</a>
+        <button class="btn btn-outline" onclick="showPage('about')">About me →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="about-wrap">
+    <div class="two-col">
+      <div>
+        <div class="section-label">About me</div>
+        <h2 class="about-headline">Developer.<br>Community<br>Leader.</h2>
+        <div class="about-body">
+          <p>I'm Sreenivas Raman — a developer, community builder, and podcast host. I'm passionate about creating things that matter, whether that's writing code, building communities, or sharing knowledge.</p>
+          <p>I was featured on the Workday DevTalk podcast discussing community leadership in Workday development, and I share tutorials and drone footage on YouTube.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="section-label">Hobbies &amp; interests</div>
+        <div class="hobbies-grid">
+          <div class="hobby-card"><span class="hobby-icon">🚁</span><span class="hobby-name">Drones</span></div>
+          <div class="hobby-card"><span class="hobby-icon">🎾</span><span class="hobby-name">Tennis</span></div>
+          <div class="hobby-card"><span class="hobby-icon">🚗</span><span class="hobby-name">Scale models</span></div>
+          <div class="hobby-card"><span class="hobby-icon">💻</span><span class="hobby-name">Coding</span></div>
+          <div class="hobby-card"><span class="hobby-icon">📦</span><span class="hobby-name">Collecting</span></div>
+          <div class="hobby-card"><span class="hobby-icon">🦾</span><span class="hobby-name">Iron Man</span></div>
+        </div>
+      </div>
+      <div class="info-stack">
+        <div class="info-card">
+          <div class="info-card-label">LinkedIn</div>
+          <div class="info-card-value"><a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank">sreenivas-raman ↗</a></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">YouTube</div>
+          <div class="info-card-value"><a href="https://www.youtube.com/playlist?list=PLn6UIBhXeC1WPtt1gfzmYdlojOGFNIWHL" target="_blank">Watch my playlist ↗</a></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Podcast</div>
+          <div class="info-card-value"><a href="https://blog.workday.com/en-us/2024/workday-devtalk-community-leadership-workday-development.html" target="_blank">Workday DevTalk ↗</a></div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Interests</div>
+          <div class="info-card-value" style="color: rgba(232,228,220,0.55); font-size:0.85rem;">Drones · Tennis · Scale model cars · Collecting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="featured-wrap">
+    <div class="section-label">Featured</div>
+    <div class="featured-grid">
+      <a href="https://www.youtube.com/playlist?list=PLn6UIBhXeC1WPtt1gfzmYdlojOGFNIWHL" target="_blank" class="feat-card">
+        <div class="feat-card-icon">▶</div>
+        <div class="feat-card-title">YouTube Playlist</div>
+        <div class="feat-card-desc">Tutorials, drone videos, and more — a curated collection of my video content.</div>
+        <div class="feat-card-link">Watch now →</div>
+      </a>
+      <a href="https://blog.workday.com/en-us/2024/workday-devtalk-community-leadership-workday-development.html" target="_blank" class="feat-card">
+        <div class="feat-card-icon">🎙</div>
+        <div class="feat-card-title">Workday DevTalk</div>
+        <div class="feat-card-desc">Featured on the Workday blog discussing community leadership in development.</div>
+        <div class="feat-card-link">Read &amp; listen →</div>
+      </a>
+      <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" class="feat-card">
+        <div class="feat-card-icon" style="font-size:0.9rem; font-weight:500; color:#c0392b;">in</div>
+        <div class="feat-card-title">LinkedIn</div>
+        <div class="feat-card-desc">My professional experience, projects, and community contributions.</div>
+        <div class="feat-card-link">View profile →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- APPS -->
+<div id="page-apps" class="page">
+  <div class="apps-wrap">
+    <div class="section-label">Mini apps</div>
+    <div class="apps-empty">
+      <div class="apps-empty-icon">⚙</div>
+      <h2>Your app hangar</h2>
+      <p>This is where mini apps will live — install tools, dashboards, or experiments right inside your personal site.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => {
+      if (l.getAttribute('onclick') && l.getAttribute('onclick').includes("'" + id + "'")) {
+        l.classList.add('active');
+      }
+    });
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
