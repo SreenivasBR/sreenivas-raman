@@ -72,6 +72,41 @@
   .feat-card-desc { font-size: 0.82rem; color: rgba(232,228,220,0.45); line-height: 1.75; }
   .feat-card-link { display: inline-block; margin-top: 1rem; font-size: 0.78rem; color: #c0392b; letter-spacing: 0.05em; }
 
+  /* EXPERIENCE */
+  .exp-wrap { max-width: 1000px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; }
+  .exp-current { background: rgba(192,57,43,0.06); border: 0.5px solid rgba(192,57,43,0.25); border-radius: 12px; padding: 1.75rem 1.9rem; margin-top: 1rem; }
+  .exp-current-role { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: #f0ece2; margin-bottom: 0.4rem; line-height: 1.25; }
+  .exp-current-meta { font-size: 0.82rem; color: rgba(232,228,220,0.5); letter-spacing: 0.04em; margin-bottom: 1rem; }
+  .exp-current-desc { font-size: 0.92rem; line-height: 1.85; color: rgba(232,228,220,0.72); max-width: 640px; }
+
+  .exp-section { margin-top: 3rem; }
+
+  .timeline { margin-top: 1.5rem; position: relative; padding-left: 1.5rem; border-left: 0.5px solid rgba(255,255,255,0.1); }
+  .timeline-item { position: relative; padding-bottom: 2rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before { content: ''; position: absolute; left: calc(-1.5rem - 5px); top: 0.4rem; width: 9px; height: 9px; border-radius: 50%; background: #c0392b; border: 2px solid #0c0d12; }
+  .timeline-period { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,228,220,0.4); margin-bottom: 0.4rem; }
+  .timeline-company { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: #f0ece2; margin-bottom: 0.25rem; }
+  .timeline-roles { font-size: 0.88rem; color: rgba(232,228,220,0.6); line-height: 1.7; }
+
+  .cred-card { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 1.75rem; margin-top: 1.25rem; }
+  .cred-title { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: #f0ece2; margin-bottom: 0.6rem; }
+  .cred-desc { font-size: 0.88rem; line-height: 1.8; color: rgba(232,228,220,0.6); }
+  .cred-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .cred-chip { font-size: 0.78rem; color: rgba(232,228,220,0.78); background: rgba(192,57,43,0.1); border: 0.5px solid rgba(192,57,43,0.25); padding: 0.4rem 0.8rem; border-radius: 20px; }
+  .cred-link { display: inline-block; margin-top: 1rem; font-size: 0.8rem; color: #c0392b; text-decoration: none; }
+  .cred-link:hover { text-decoration: underline; }
+
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+  .proj-card { background: rgba(255,255,255,0.025); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s; }
+  .proj-card:hover { border-color: rgba(192,57,43,0.3); }
+  .proj-card-org { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(192,57,43,0.85); margin-bottom: 0.7rem; }
+  .proj-card-title { font-size: 1rem; font-weight: 500; color: #f0ece2; margin-bottom: 0.6rem; line-height: 1.4; }
+  .proj-card-desc { font-size: 0.83rem; line-height: 1.75; color: rgba(232,228,220,0.55); }
+
+  .stack-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+  .stack-chip { font-size: 0.78rem; color: rgba(232,228,220,0.7); background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); padding: 0.4rem 0.85rem; border-radius: 6px; }
+
   /* APPS */
   .apps-wrap { max-width: 1000px; margin: 0 auto; padding: 4rem 2.5rem; }
   .apps-empty { text-align: center; padding: 5rem 2rem; border: 0.5px dashed rgba(255,255,255,0.08); border-radius: 16px; margin-top: 1.5rem; }
@@ -82,9 +117,13 @@
   @media (max-width: 680px) {
     .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
     nav { padding: 1rem 1.25rem; }
-    .nav-links { gap: 1.25rem; }
-    .hero, .about-wrap, .featured-wrap, .apps-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .nav-links { gap: 1.1rem; flex-wrap: wrap; justify-content: flex-end; }
+    .hero, .about-wrap, .featured-wrap, .apps-wrap, .exp-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
     .arc-deco { display: none; }
+    .exp-current { padding: 1.4rem 1.4rem; }
+    .exp-current-role { font-size: 1.35rem; }
+    .timeline { padding-left: 1.25rem; }
+    .timeline-item::before { left: calc(-1.25rem - 5px); }
   }
 </style>
 </head>
@@ -95,6 +134,7 @@
   <div class="nav-links">
     <button class="nav-link active" onclick="showPage('home')">Home</button>
     <button class="nav-link" onclick="showPage('about')">About</button>
+    <button class="nav-link" onclick="showPage('experience')">Experience</button>
     <button class="nav-link" onclick="showPage('apps')">Apps</button>
   </div>
 </nav>
@@ -192,6 +232,104 @@
         <div class="feat-card-desc">My professional experience, projects, and community contributions.</div>
         <div class="feat-card-link">View profile →</div>
       </a>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="page-experience" class="page">
+  <div class="exp-wrap">
+    <div class="section-label">Experience</div>
+
+    <div class="exp-current">
+      <div class="exp-current-role">Staff Software Engineer · Intuit</div>
+      <div class="exp-current-meta">Oct 2025 – Present · Mountain View, CA (Hybrid)</div>
+      <div class="exp-current-desc">Designing and architecting advanced capabilities on Workday Extend and integrations — building custom enterprise applications that connect Intuit's HR (People &amp; Places Tech), ServiceNow, and broader data ecosystems.</div>
+    </div>
+
+    <div class="exp-section">
+      <div class="section-label">Career timeline</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-period">Oct 2025 – Present</div>
+          <div class="timeline-company">Intuit</div>
+          <div class="timeline-roles">Staff Software Engineer</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Jun 2022 – Oct 2025 · 3.5 yrs</div>
+          <div class="timeline-company">LinkedIn</div>
+          <div class="timeline-roles">Staff Enterprise Engineer → Senior Enterprise Engineer</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Mar 2008 – Jun 2022 · 14 yrs</div>
+          <div class="timeline-company">Target</div>
+          <div class="timeline-roles">Lead Engineer → Lead Application Consultant → Project Leader BI → Sr. Lead Developer BI</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Apr 2004 – Feb 2008</div>
+          <div class="timeline-company">Dell International Services</div>
+          <div class="timeline-roles">Data Analyst</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-section">
+      <div class="section-label">Workday identity</div>
+      <div class="cred-card">
+        <div class="cred-title">9+ years building on Workday</div>
+        <div class="cred-desc">Workday MVP — a recognition given to top contributors in the global Workday community. Deep specialist in Workday Extend, integrations, and the Compensation &amp; Talent space.</div>
+        <div class="cred-list">
+          <span class="cred-chip">Workday MVP</span>
+          <span class="cred-chip">Workday Developer</span>
+          <span class="cred-chip">Workday Extend Developer</span>
+        </div>
+        <a href="https://blog.workday.com/en-us/2024/workday-devtalk-community-leadership-workday-development.html" target="_blank" class="cred-link">Featured on Workday DevTalk podcast ↗</a>
+      </div>
+    </div>
+
+    <div class="exp-section">
+      <div class="section-label">Key projects</div>
+      <div class="proj-grid">
+        <div class="proj-card">
+          <div class="proj-card-org">LinkedIn</div>
+          <div class="proj-card-title">AI-driven feedback system</div>
+          <div class="proj-card-desc">Built an AI-powered feedback engine (OpenAI + Workday Extend) that improved feedback quality across Annual and Mid-Year review cycles and generated manager insights at scale.</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-card-org">Intuit</div>
+          <div class="proj-card-title">Workday Extend integrations</div>
+          <div class="proj-card-desc">Custom enterprise applications connecting Intuit's HR (People &amp; Places Tech), ServiceNow, and broader data ecosystems through Workday Extend.</div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-card-org">Community</div>
+          <div class="proj-card-title">Workday DevTalk podcast</div>
+          <div class="proj-card-desc">Featured guest discussing community leadership in Workday development — sharing patterns, lessons, and best practices with the global Workday community.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-section">
+      <div class="section-label">Tech stack</div>
+      <div class="stack-chips">
+        <span class="stack-chip">Workday Extend</span>
+        <span class="stack-chip">Workday Integrations</span>
+        <span class="stack-chip">JavaScript</span>
+        <span class="stack-chip">Node.js</span>
+        <span class="stack-chip">Java</span>
+        <span class="stack-chip">Python</span>
+        <span class="stack-chip">React</span>
+        <span class="stack-chip">HTML / CSS</span>
+        <span class="stack-chip">PostgreSQL</span>
+        <span class="stack-chip">Supabase</span>
+        <span class="stack-chip">ServiceNow</span>
+        <span class="stack-chip">Microsoft CoPilot Studio</span>
+        <span class="stack-chip">Power Automate</span>
+        <span class="stack-chip">Tableau</span>
+        <span class="stack-chip">MicroStrategy</span>
+        <span class="stack-chip">DigitalOcean</span>
+        <span class="stack-chip">GitHub Actions</span>
+        <span class="stack-chip">VS Code</span>
+      </div>
     </div>
   </div>
 </div>
