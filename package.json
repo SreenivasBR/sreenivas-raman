@@ -2,9 +2,9 @@
   "name": "sreenivas-chat-server",
   "version": "1.0.0",
   "type": "module",
-  "main": "chat-server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node chat-server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
