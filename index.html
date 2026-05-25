@@ -128,6 +128,18 @@
   .apps-empty h2 { font-family: 'DM Serif Display', serif; font-size: 1.7rem; color: #f0ece2; margin-bottom: 0.75rem; }
   .apps-empty p { color: rgba(232,228,220,0.55); font-size: 0.92rem; max-width: 380px; margin: 0 auto; line-height: 1.8; }
 
+  /* Live apps showcase */
+  .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+  .app-card { background: rgba(255,255,255,0.025); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 0; text-decoration: none; display: flex; flex-direction: column; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+  .app-card:hover { border-color: rgba(192,57,43,0.35); transform: translateY(-3px); }
+  .app-card-preview { height: 130px; background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%); display: flex; align-items: center; justify-content: center; font-size: 2.6rem; color: rgba(255,255,255,0.95); position: relative; }
+  .app-card-preview .badge { position: absolute; top: 0.85rem; right: 0.85rem; background: rgba(0,0,0,0.4); color: white; font-size: 0.65rem; padding: 0.25rem 0.6rem; border-radius: 12px; letter-spacing: 0.1em; text-transform: uppercase; backdrop-filter: blur(6px); }
+  .app-card-body { padding: 1.25rem 1.4rem 1.5rem; }
+  .app-card-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: #f0ece2; margin-bottom: 0.5rem; line-height: 1.3; }
+  .app-card-desc { font-size: 0.85rem; color: rgba(232,228,220,0.72); line-height: 1.75; margin-bottom: 0.85rem; }
+  .app-card-link { font-size: 0.78rem; color: #c0392b; letter-spacing: 0.06em; }
+  .apps-coming-soon { margin-top: 1.5rem; padding: 1.5rem 1.5rem; border: 0.5px dashed rgba(255,255,255,0.1); border-radius: 12px; text-align: center; color: rgba(232,228,220,0.45); font-size: 0.85rem; font-style: italic; }
+
   footer { text-align: center; padding: 2rem 1rem 2.5rem; font-size: 0.72rem; color: rgba(232,228,220,0.35); letter-spacing: 0.1em; }
 
   @media (max-width: 680px) {
@@ -351,23 +363,29 @@
     <div class="exp-section">
       <div class="section-label">Featured</div>
       <div class="featured-grid">
-        <a href="https://www.youtube.com/@sreen81" target="_blank" class="feat-card">
+        <a href="https://www.youtube.com/watch?v=4gutyKRhets" target="_blank" class="feat-card">
           <div class="feat-card-icon">▶</div>
-          <div class="feat-card-title">YouTube Channel</div>
-          <div class="feat-card-desc">Tutorials, drone footage, and tech walkthroughs — a curated collection of my video work.</div>
-          <div class="feat-card-link">Watch now →</div>
+          <div class="feat-card-title">Model-First Workday Build Best Practices</div>
+          <div class="feat-card-desc">Featured guest on <strong>Wake Up With Workday</strong> with Tony Gilfillan &amp; Todd Tarpley — live YouTube conversation on model-first thinking, scaling Workday Build solutions, and lessons from the field.</div>
+          <div class="feat-card-link">Watch live stream →</div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=2c8mhbOChFg" target="_blank" class="feat-card">
+          <div class="feat-card-icon">▶</div>
+          <div class="feat-card-title">Workday Business Object Tips &amp; Tricks</div>
+          <div class="feat-card-desc">Follow-up on <strong>Wake Up With Workday</strong> — diving deeper into business object design patterns, gotchas, and real-world tips for building scalable Workday Extend apps.</div>
+          <div class="feat-card-link">Watch follow-up →</div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=ntB2rhKy1ZU" target="_blank" class="feat-card">
+          <div class="feat-card-icon">▶</div>
+          <div class="feat-card-title">Power to Build Your Dream</div>
+          <div class="feat-card-desc">A feature episode on my journey from data analyst to Staff Engineer — community, craft, and what it takes to keep building.</div>
+          <div class="feat-card-link">Watch interview →</div>
         </a>
         <a href="https://blog.workday.com/en-us/2024/workday-devtalk-community-leadership-workday-development.html" target="_blank" class="feat-card">
           <div class="feat-card-icon">🎙</div>
           <div class="feat-card-title">Workday DevTalk</div>
           <div class="feat-card-desc">Featured guest on the Workday blog discussing community leadership in development.</div>
           <div class="feat-card-link">Read &amp; listen →</div>
-        </a>
-        <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" class="feat-card">
-          <div class="feat-card-icon">in</div>
-          <div class="feat-card-title">LinkedIn</div>
-          <div class="feat-card-desc">My professional experience, projects, and community contributions.</div>
-          <div class="feat-card-link">View profile →</div>
         </a>
       </div>
     </div>
@@ -440,10 +458,23 @@
 <div id="page-apps" class="page">
   <div class="apps-wrap">
     <div class="section-label">Mini apps</div>
-    <div class="apps-empty">
-      <div class="apps-empty-icon">⚙</div>
-      <h2>Your app hangar</h2>
-      <p>This is where mini apps will live — install tools, dashboards, or experiments right inside your personal site.</p>
+
+    <div class="apps-grid">
+      <a href="https://sreenivasbr.github.io/model-first-game/" target="_blank" rel="noopener" class="app-card">
+        <div class="app-card-preview">
+          🔒
+          <span class="badge">Live</span>
+        </div>
+        <div class="app-card-body">
+          <div class="app-card-title">Locked or Loose?</div>
+          <div class="app-card-desc">A learning game on Workday Extend's "Model First" rules. Drag &amp; drop BO and security domain attributes into the right bucket — what can change after promotion, what stays locked forever. Built for my DevCon 2026 chalk talk.</div>
+          <div class="app-card-link">Play the game →</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="apps-coming-soon">
+      More experiments &amp; mini apps coming soon — tools, dashboards, and demos I'm building along the way.
     </div>
   </div>
 </div>
