@@ -142,11 +142,48 @@
 
   footer { text-align: center; padding: 2rem 1rem 2.5rem; font-size: 0.72rem; color: rgba(232,228,220,0.35); letter-spacing: 0.1em; }
 
+  /* DEVCON (temporary) */
+  .devcon-wrap { max-width: 1000px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; }
+  .devcon-hero { background: linear-gradient(135deg, rgba(192,57,43,0.10), rgba(192,57,43,0.02)); border: 0.5px solid rgba(192,57,43,0.28); border-radius: 16px; padding: 2rem 2.1rem; margin-top: 1rem; position: relative; overflow: hidden; }
+  .devcon-hero::before { content: ''; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(192,57,43,0.18), transparent 65%); pointer-events: none; }
+  .devcon-eyebrow { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: #c0392b; margin-bottom: 0.7rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .devcon-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #c0392b; box-shadow: 0 0 0 0 rgba(192,57,43,0.65); animation: dotpulse 2s infinite; }
+  @keyframes dotpulse { 0% { box-shadow: 0 0 0 0 rgba(192,57,43,0.65); } 70% { box-shadow: 0 0 0 8px rgba(192,57,43,0); } 100% { box-shadow: 0 0 0 0 rgba(192,57,43,0); } }
+  .devcon-title { font-family: 'DM Serif Display', serif; font-size: 2.1rem; line-height: 1.15; color: #f0ece2; margin-bottom: 0.75rem; }
+  .devcon-title em { color: #c0392b; font-style: italic; }
+  .devcon-meta { font-size: 0.88rem; color: rgba(232,228,220,0.78); line-height: 1.7; }
+  .devcon-meta strong { color: #f0ece2; font-weight: 500; }
+
+  .session-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .session-card { background: rgba(255,255,255,0.025); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.5rem 1.7rem; display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: start; transition: border-color 0.2s, transform 0.2s; }
+  .session-card:hover { border-color: rgba(192,57,43,0.35); transform: translateY(-2px); }
+  .session-emoji { font-size: 1.8rem; line-height: 1; width: 56px; height: 56px; border-radius: 12px; background: rgba(192,57,43,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .session-body { min-width: 0; }
+  .session-tagline { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: #c0392b; margin-bottom: 0.45rem; }
+  .session-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; line-height: 1.3; color: #f0ece2; margin-bottom: 0.5rem; }
+  .session-id { font-size: 0.72rem; color: rgba(232,228,220,0.45); letter-spacing: 0.06em; font-family: 'DM Sans', sans-serif; }
+  .session-when { font-size: 0.82rem; color: rgba(232,228,220,0.78); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; }
+  .session-when .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(232,228,220,0.4); }
+  .session-pill { display: inline-block; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.22rem 0.6rem; border-radius: 20px; background: rgba(192,57,43,0.12); color: #d97c70; border: 0.5px solid rgba(192,57,43,0.25); }
+  .session-desc { font-size: 0.88rem; line-height: 1.8; color: rgba(232,228,220,0.78); }
+  .session-cohost { font-size: 0.78rem; color: rgba(232,228,220,0.55); margin-top: 0.55rem; font-style: italic; }
+
+  .devcon-footnote { margin-top: 2.5rem; padding: 1.25rem 1.5rem; border: 0.5px dashed rgba(192,57,43,0.22); border-radius: 12px; text-align: center; color: rgba(232,228,220,0.55); font-size: 0.82rem; line-height: 1.7; }
+  .devcon-footnote strong { color: #f0ece2; font-weight: 500; }
+
+  /* nav dot for event button */
+  .nav-link-event { position: relative; color: #c0392b !important; }
+  .nav-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #c0392b; margin-left: 0.4rem; vertical-align: middle; box-shadow: 0 0 0 0 rgba(192,57,43,0.65); animation: dotpulse 2s infinite; }
+
   @media (max-width: 680px) {
     .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
     nav { padding: 1rem 1.25rem; }
     .nav-links { gap: 1.1rem; flex-wrap: wrap; justify-content: flex-end; }
-    .hero, .about-wrap, .apps-wrap, .exp-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .hero, .about-wrap, .apps-wrap, .exp-wrap, .devcon-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .session-card { grid-template-columns: 1fr; gap: 1rem; padding: 1.25rem 1.3rem; }
+    .session-emoji { width: 48px; height: 48px; font-size: 1.5rem; }
+    .devcon-title { font-size: 1.7rem; }
+    .devcon-hero { padding: 1.5rem 1.4rem; }
     .arc-deco { display: none; }
     .exp-current { padding: 1.4rem 1.4rem; }
     .exp-current-role { font-size: 1.35rem; }
@@ -167,6 +204,7 @@
     <button class="nav-link active" onclick="showPage('home')">Home</button>
     <button class="nav-link" onclick="showPage('about')">About</button>
     <button class="nav-link" onclick="showPage('experience')">Experience</button>
+    <button class="nav-link nav-link-event" onclick="showPage('devcon')">DevCon '26<span class="nav-dot"></span></button>
     <!-- <button class="nav-link" onclick="showPage('apps')">Apps</button> -->
   </div>
 </nav>
@@ -192,7 +230,8 @@
         Curious developer. Adventure seeker. <strong>Forever learning.</strong>
       </p>
       <div class="hero-cta">
-        <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" class="btn btn-red">LinkedIn ↗</a>
+        <button class="btn btn-red" onclick="showPage('devcon')"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;margin-right:0.45rem;animation:dotpulse 2s infinite;"></span> Catch me at DevCon '26 →</button>
+        <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
         <button class="btn btn-outline" onclick="showPage('about')">About me →</button>
       </div>
     </div>
@@ -475,6 +514,75 @@
 
     <div class="apps-coming-soon">
       More experiments &amp; mini apps coming soon — tools, dashboards, and demos I'm building along the way.
+    </div>
+  </div>
+</div>
+
+<!-- DEVCON (temporary — remove after June 5, 2026) -->
+<div id="page-devcon" class="page">
+  <div class="devcon-wrap">
+    <div class="devcon-hero">
+      <div class="devcon-eyebrow"><span class="devcon-live-dot"></span> Catch me live</div>
+      <h2 class="devcon-title">Workday <em>DevCon 2026</em></h2>
+      <div class="devcon-meta">
+        <strong>June 2 – 5, 2026 · Las Vegas, NV</strong><br>
+        Hosting two meetups and giving a chalk talk. Come say hi — there's room for everyone, and we're keeping conversations honest, practical, and a little spicy.
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top: 2.5rem;">My sessions</div>
+
+    <div class="session-list">
+      <!-- Foodie Developer Meetup -->
+      <div class="session-card">
+        <div class="session-emoji">🍽️</div>
+        <div class="session-body">
+          <div class="session-tagline">Co-host · Meetup</div>
+          <div class="session-title">The Foodie Developer Meetup <span class="session-id">[MUP2633]</span></div>
+          <div class="session-when">
+            <span>Tue, June 2</span><span class="dot"></span>
+            <span>7:30 – 8:00 PM PDT</span><span class="dot"></span>
+            <span class="session-pill">DevCon After Dark</span>
+          </div>
+          <div class="session-desc">Where code meets cuisine. As developers there's never just one right way to solve a problem — kind of like cooking. Sometimes you follow the recipe, sometimes you improvise, and sometimes you accidentally deploy something spicy to production. 🌶️ Come swap recipes, war stories, and your favorite local eats.</div>
+          <div class="session-cohost">Co-hosting with fellow Workday MVP McKenzie.</div>
+        </div>
+      </div>
+
+      <!-- Media & Tech Meetup -->
+      <div class="session-card">
+        <div class="session-emoji">🤖</div>
+        <div class="session-body">
+          <div class="session-tagline">Host · Meetup</div>
+          <div class="session-title">Developing for Innovation: Media &amp; Tech Meetup <span class="session-id">[MUP2636]</span></div>
+          <div class="session-when">
+            <span>Wed, June 3</span><span class="dot"></span>
+            <span>9:45 – 10:15 AM PDT</span>
+          </div>
+          <div class="session-desc">Connect with Media &amp; Tech developers across the globe. We'll dig into emerging Workday trends, AI, automation, and how data-driven workflows are shaping the future of digital work. Bring your ideas, your questions, and your hot takes.</div>
+        </div>
+      </div>
+
+      <!-- Chalk Talk -->
+      <div class="session-card">
+        <div class="session-emoji">🧱</div>
+        <div class="session-body">
+          <div class="session-tagline">Speaker · Chalk Talk</div>
+          <div class="session-title">Model First, Regret Never <span class="session-id">[EXT1261]</span></div>
+          <div class="session-when">
+            <span>Wed, June 3</span><span class="dot"></span>
+            <span>11:00 – 11:40 AM PDT</span><span class="dot"></span>
+            <span class="session-pill">Whiteboard only</span>
+          </div>
+          <div class="session-desc">Designing Workday Build solutions that scale. The story of 47 fields, a panicked redesign, and the instinct I built from it. We'll whiteboard the model decisions I now make before writing a single PMD — and the ones I wish I had made years ago.</div>
+          <div class="session-cohost">Analog session — no slides, no recording, just markers and conversation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="devcon-footnote">
+      Want to nerd out on Workday Extend, modeling, or anything in between? <strong>Find me at any session above, or via my <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" style="color:#c0392b;">LinkedIn</a>.</strong><br>
+      This section disappears after DevCon — but the lessons stay.
     </div>
   </div>
 </div>
