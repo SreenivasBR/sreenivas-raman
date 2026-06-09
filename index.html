@@ -38,6 +38,11 @@
   .arc-deco { position: absolute; right: 6%; top: 50%; transform: translateY(-50%); width: 180px; height: 180px; opacity: 0.06; pointer-events: none; }
   .hero-wrap { position: relative; }
 
+  /* Profile photo */
+  .hero-photo-wrap { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); z-index: 1; }
+  .hero-photo { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid rgba(192,57,43,0.5); box-shadow: 0 0 0 8px rgba(192,57,43,0.08), 0 24px 60px rgba(0,0,0,0.4); display: block; }
+  .about-photo { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid rgba(192,57,43,0.5); box-shadow: 0 0 0 6px rgba(192,57,43,0.08); display: block; margin-bottom: 1.25rem; }
+
   /* ABOUT */
   .about-wrap { max-width: 1000px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; }
   .section-label { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: #c0392b; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.6rem; }
@@ -192,7 +197,17 @@
     .about-headline { font-size: 2rem; }
     .hobbies-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
     .social-btn { width: 44px; height: 44px; }
-    .hero { min-height: 72vh; justify-content: flex-start; padding-top: 9vh; }
+
+    /* Hero photo on mobile */
+    .hero-wrap { display: flex; flex-direction: column; }
+    .hero-photo-wrap { position: static; transform: none; display: flex; justify-content: center; padding: 2.5rem 1.25rem 0; }
+    .hero-photo { width: 110px; height: 110px; }
+    .hero { min-height: unset; padding-top: 1.75rem; padding-bottom: 3rem; }
+
+    /* About photo on mobile */
+    .about-photo { width: 120px; height: 120px; margin: 0 auto 1.25rem; }
+    .socials-wrap { align-items: center; text-align: center; }
+    .socials { justify-content: center; }
   }
 </style>
 </head>
@@ -204,7 +219,6 @@
     <button class="nav-link active" onclick="showPage('home')">Home</button>
     <button class="nav-link" onclick="showPage('about')">About</button>
     <button class="nav-link" onclick="showPage('experience')">Experience</button>
-    <button class="nav-link nav-link-event" onclick="showPage('devcon')">DevCon '26<span class="nav-dot"></span></button>
     <button class="nav-link" onclick="showPage('apps')">Apps</button>
   </div>
 </nav>
@@ -212,6 +226,9 @@
 <!-- HOME -->
 <div id="page-home" class="page active">
   <div class="hero-wrap">
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="profile.jpg" alt="Sreenivas Raman">
+    </div>
     <svg class="arc-deco" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="90" cy="90" r="88" stroke="white" stroke-width="1"/>
       <circle cx="90" cy="90" r="70" stroke="white" stroke-width="0.5"/>
@@ -230,7 +247,7 @@
         Curious developer. Adventure seeker. <strong>Forever learning.</strong>
       </p>
       <div class="hero-cta">
-        <button class="btn btn-red" onclick="showPage('devcon')"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;margin-right:0.45rem;animation:dotpulse 2s infinite;"></span> Catch me at DevCon '26 →</button>
+        <button class="btn btn-red" onclick="showPage('apps')">My Mini Apps →</button>
         <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
         <button class="btn btn-outline" onclick="showPage('about')">About me →</button>
       </div>
@@ -268,6 +285,7 @@
         </div>
       </div>
       <div class="socials-wrap">
+        <img class="about-photo" src="profile.jpg" alt="Sreenivas Raman">
         <div>
           <div class="socials-label">Find me online</div>
           <div class="socials" style="margin-top: 1rem;">
@@ -518,74 +536,6 @@
   </div>
 </div>
 
-<!-- DEVCON (temporary — remove after June 5, 2026) -->
-<div id="page-devcon" class="page">
-  <div class="devcon-wrap">
-    <div class="devcon-hero">
-      <div class="devcon-eyebrow"><span class="devcon-live-dot"></span> Catch me live</div>
-      <h2 class="devcon-title">Workday <em>DevCon 2026</em></h2>
-      <div class="devcon-meta">
-        <strong>June 2 – 5, 2026 · Las Vegas, NV</strong><br>
-        Hosting two meetups and giving a chalk talk. Come say hi — there's room for everyone, and we're keeping conversations honest, practical, and a little spicy.
-      </div>
-    </div>
-
-    <div class="section-label" style="margin-top: 2.5rem;">My sessions</div>
-
-    <div class="session-list">
-      <!-- Foodie Developer Meetup -->
-      <div class="session-card">
-        <div class="session-emoji">🍽️</div>
-        <div class="session-body">
-          <div class="session-tagline">Co-host · Meetup</div>
-          <div class="session-title">The Foodie Developer Meetup <span class="session-id">[MUP2633]</span></div>
-          <div class="session-when">
-            <span>Tue, June 2</span><span class="dot"></span>
-            <span>7:30 – 8:00 PM PDT</span><span class="dot"></span>
-            <span class="session-pill">DevCon After Dark</span>
-          </div>
-          <div class="session-desc">Where code meets cuisine. As developers there's never just one right way to solve a problem — kind of like cooking. Sometimes you follow the recipe, sometimes you improvise, and sometimes you accidentally deploy something spicy to production. 🌶️ Come swap recipes, war stories, and your favorite local eats.</div>
-          <div class="session-cohost">Co-hosting with fellow Workday MVP McKenzie.</div>
-        </div>
-      </div>
-
-      <!-- Media & Tech Meetup -->
-      <div class="session-card">
-        <div class="session-emoji">🤖</div>
-        <div class="session-body">
-          <div class="session-tagline">Host · Meetup</div>
-          <div class="session-title">Developing for Innovation: Media &amp; Tech Meetup <span class="session-id">[MUP2636]</span></div>
-          <div class="session-when">
-            <span>Wed, June 3</span><span class="dot"></span>
-            <span>9:45 – 10:15 AM PDT</span>
-          </div>
-          <div class="session-desc">Connect with Media &amp; Tech developers across the globe. We'll dig into emerging Workday trends, AI, automation, and how data-driven workflows are shaping the future of digital work. Bring your ideas, your questions, and your hot takes.</div>
-        </div>
-      </div>
-
-      <!-- Chalk Talk -->
-      <div class="session-card">
-        <div class="session-emoji">🧱</div>
-        <div class="session-body">
-          <div class="session-tagline">Speaker · Chalk Talk</div>
-          <div class="session-title">Model First, Regret Never <span class="session-id">[EXT1261]</span></div>
-          <div class="session-when">
-            <span>Wed, June 3</span><span class="dot"></span>
-            <span>11:00 – 11:40 AM PDT</span><span class="dot"></span>
-            <span class="session-pill">Whiteboard only</span>
-          </div>
-          <div class="session-desc">Designing Workday Build solutions that scale. The story of 47 fields, a panicked redesign, and the instinct I built from it. We'll whiteboard the model decisions I now make before writing a single PMD — and the ones I wish I had made years ago.</div>
-          <div class="session-cohost">Analog session — no slides, no recording, just markers and conversation.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="devcon-footnote">
-      Want to nerd out on Workday Extend, modeling, or anything in between? <strong>Find me at any session above, or via my <a href="https://www.linkedin.com/in/sreenivas-raman/" target="_blank" style="color:#c0392b;">LinkedIn</a>.</strong><br>
-      This section disappears after DevCon — but the lessons stay.
-    </div>
-  </div>
-</div>
 
 <footer>© Sreenivas Raman</footer>
 
